@@ -1,7 +1,7 @@
 import pytest
 from src.models import Task, Student
 
-# Requirement #9 from prof's email: Automated Testing
+# Requirement #9 from prof: Automated Testing
 # Run this by typing 'pytest' in terminal
 
 def test_create_task():
