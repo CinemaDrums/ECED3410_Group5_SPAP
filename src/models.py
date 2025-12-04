@@ -53,3 +53,12 @@ class Student:
         The SessionController creates the session and calculates its duration.
         """
         self.study_sessions.append(session)
+
+# To implement
+# class Task:
+
+# class StudySession:
+    
+# class Course:
+
+# class Day:

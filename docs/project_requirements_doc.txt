@@ -1,0 +1,12 @@
+Project Requirements Document
+
+1. Refactoring: Improve structure (MVC layers).
+2. Optimization: Use cProfile/timeit for performance.
+3. Authentication: Implement secure access (bcrypt).
+4. Input Validation: Ensure safe user input handling.
+5. Security Enhancements: Cryptography for data protection.
+6. Technical Debt Review: Analyze areas for improvement.
+7. Debugging: Use the python debugger if needed (pdb).
+8. EDI & Accessibility: Clear error messages and instructions for users.
+9. Testing: Unit tests with pytest for reliability.
+10. Documentation: Comprehensive code comments.
