@@ -11,7 +11,7 @@
 - [ ] **Day Class:** Define calendar attributes.
 
 ## `src/storage.py`
-- [ ] **Database Persistence:** Implement `DatabaseHandler` to read/write `database.json`.
+- [x] **Database Persistence:** Implement `DatabaseHandler` to read/write `database.json`.
 
 ## `src/main.py`
 - [ ] **CLI Interface:** Build the main menu loop (Add Task, Start Timer, etc.).
