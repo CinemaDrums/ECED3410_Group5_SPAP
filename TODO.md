@@ -5,10 +5,10 @@
 
 ## `src/models.py` (Reference Figure 1 in Submission 3 doc for attributes)
 - [x] **Student Class:**
-- [ ] **Task Class:** Define attributes.
-- [ ] **StudySession Class:** Define timer attributes.
-- [ ] **Course Class:** Define list of tasks and sessions.
-- [ ] **Day Class:** Define calendar attributes.
+- [x] **Task Class:** Define attributes.
+- [x] **StudySession Class:** Define timer attributes.
+- [x] **Course Class:** Define list of tasks and sessions.
+- [x] **Day Class:** Define calendar attributes.
 
 ## `src/storage.py`
 - [x] **Database Persistence:** Implement `DatabaseHandler` to read/write `database.json`.
