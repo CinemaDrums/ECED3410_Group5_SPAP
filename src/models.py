@@ -58,9 +58,9 @@ class Student:
         """
         self.tasks.append(task)
         """
-        Is a seperate global list of tasks necessary? We could instead just cycle each through each course and take the list of tasks from there.
-        Just since a global list would mostly be for viewing so the Student class wouldn't need immediate access to it.
-        Same with study sessions as well.
+        * Is a seperate global list of tasks necessary? We could instead just cycle each through each course and take the list of tasks from there. *
+        * Just since a global list would mostly be for viewing so the Student class wouldn't need immediate access to it. *
+        * Same with study sessions as well. *
         """
 
     def add_study_session(self, session: "StudySession") -> None:
@@ -98,19 +98,15 @@ class Course:
     # This will ensure each Course instance has its own separate lists
 
     tasks: List["Task"] = field(default_factory=list)
-    study_sessions: List["StudySession"] = field(default_factory=list)
+    calendar: List["Day"] = field(default_factory=list)
 
     def add_task(self, task: "Task") -> None:
         #Adds a task to this course's list of tasks.
         self.tasks.append(task)
 
-    def add_study_session(self, session: "StudySession") -> None:
-        """
-        Stores a completed study session.
-        
-        The SessionController creates the session and calculates its duration.
-        """
-        self.study_sessions.append(session)
+    def add_day(self, day: "Day") -> None:
+        # Stores a completed day.
+        self.calendar.append(day)
 
 @dataclass
 class Task:
