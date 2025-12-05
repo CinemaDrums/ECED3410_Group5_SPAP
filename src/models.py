@@ -3,6 +3,16 @@ from dataclasses import dataclass, field #
 from enum import Enum
 import datetime
 
+class Type(Enum):
+    LECTURE = 1
+    STUDY = 2
+    CLASSWORK = 3
+
+class Status(Enum):
+    TODO = 1
+    IN_PROGRESS = 2
+    DONE = 3
+
 @dataclass
 class Student:
     """
@@ -124,7 +134,7 @@ class Task:
     due_date: datetime # due date for the task
     weighted_percent: float # percentage of the total grade this task is worth
     points_earned: float # grade earned on this task
-    # Enum goes here
+    task_status: Status # tracks whether the task is to be started, in progress or finished
     total_work_time: float # total time spent working on the task
 
 @dataclass
@@ -146,5 +156,35 @@ class StudySession:
     sesion_id: int # unique identifier for the study session
     start_time: datetime # when the study session started
     duration_minutes: int # how long the study session was in minutes
-    # Enum goes here
-    # Task goes here (does anything specific need to be done for an optional attribute?)
+    session_type: Type # determines whether the session is a study, work or lecture section
+    session_task: Task # if session is a classwork type session then this determines what task is being worked on
+    # * session_task being optional can be handled directly in the Session set up *
+
+@dataclass
+class Day:
+    """
+    The Day class stores all information related to a specific day for a specific course.
+
+    This class does NOT handle:
+        - timing study sessions
+        - saving/loading files
+        - analytics calculations
+
+    Those responsibilities are handled by other components
+    (SessionController, DatabaseHandler, AnalyticsEngine).
+
+    Day is simply a data container.
+    """
+
+    date: datetime # the calendar date
+    productivity_score: float # computed score based on work / time
+
+    # List of objects connected to this course
+    # These default to empty lists using field(default_factory=list)
+    # This will ensure each Course instance has its own separate lists
+
+    tasks: List["Task"] = field(default_factory=list)
+
+    def add_task(self, task: "Task") -> None:
+        #Adds a task to this course's list of tasks.
+        self.tasks.append(task)
