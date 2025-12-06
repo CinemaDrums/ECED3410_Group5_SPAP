@@ -1,7 +1,9 @@
-from typing import List # 'List' is a type hint that says "this variable holds a list of things".
+from typing import List, Optional # 'List' is a type hint that says "this variable holds a list of things".
 from dataclasses import dataclass, field # 
 from enum import Enum
 import datetime
+import bcrypt
+
 
 class Type(Enum):
     LECTURE = 1
@@ -71,6 +73,24 @@ class Student:
         """
         self.study_sessions.append(session)
 
+    # Added authentication methods (bcrypt) for password handling, because main.py requires secure login
+    def set_password(self, password_plain):
+        self.password_hash = bcrypt.hashpw(password_plain.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+    def check_password(self, password_plain):
+        if not self.password_hash: return False
+        return bcrypt.checkpw(password_plain.encode('utf-8'), self.password_hash.encode('utf-8'))
+    
+    def to_dict(self):
+        return {
+            "email": self.email,
+            "password_hash": self.password_hash,
+            "student_id": self.student_id,
+            "courses": [c.to_dict() for c in self.courses],
+            "tasks": [t.to_dict() for t in self.tasks],
+            "study_sessions": [s.to_dict() for s in self.study_sessions],
+        }
+
 @dataclass
 class Course:
     """
@@ -108,6 +128,18 @@ class Course:
         # Stores a completed day.
         self.calendar.append(day)
 
+    # Added the to_dict() method to all classes in this file so storage.py can save them to JSON
+    def to_dict(self):
+        return {
+            "course_id": self.course_id,
+            "hours_study": self.hours_study,
+            "hours_lecture": self.hours_lecture,
+            "hours_classwork": self.hours_classwork,
+            "grade_percent": self.grade_percent,
+            "tasks": [t.to_dict() for t in self.tasks],
+            "calendar": [d.to_dict() for d in self.calendar],
+        }
+
 @dataclass
 class Task:
     """
@@ -133,6 +165,18 @@ class Task:
     task_status: Status # tracks whether the task is to be started, in progress or finished
     total_work_time: float # total time spent working on the task
 
+    def to_dict(self):
+        return {
+            "task_id": self.task_id,
+            "title": self.title,
+            "date_assigned": str(self.date_assigned),
+            "due_date": str(self.due_date),
+            "weighted_percent": self.weighted_percent,
+            "points_earned": self.points_earned,
+            "task_status": self.task_status.value,
+            "total_work_time": self.total_work_time,
+        }
+
 @dataclass
 class StudySession:
     """
@@ -149,12 +193,23 @@ class StudySession:
     StudySession is simply a data container.
     """
 
-    sesion_id: int # unique identifier for the study session
+    session_id: int # unique identifier for the study session
     start_time: datetime # when the study session started
     duration_minutes: int # how long the study session was in minutes
     session_type: Type # determines whether the session is a study, work or lecture section
-    session_task: Task # if session is a classwork type session then this determines what task is being worked on
-    # * session_task being optional can be handled directly in the Session set up *
+
+    # Changed to Optional so the app doesn't crash if a student starts a session without selecting a task
+    session_task: Optional["Task"] = None
+
+    def to_dict(self):
+        return {
+            "session_id": self.session_id,
+            "start_time": str(self.start_time),
+            "duration_minutes": self.duration_minutes,
+            "session_type": self.session_type.value,
+            "session_task": self.session_task.to_dict() if self.session_task else None # Check if task exists before trying to save it, otherwise save None
+
+        }
 
 @dataclass
 class Day:
@@ -184,3 +239,10 @@ class Day:
     def add_task(self, task: "Task") -> None:
         #Adds a task to this course's list of tasks.
         self.tasks.append(task)
+
+    def to_dict(self):
+        return {
+            "date": str(self.date),
+            "productivity_score": self.productivity_score,
+            "tasks": [t.to_dict() for t in self.tasks],
+        }
