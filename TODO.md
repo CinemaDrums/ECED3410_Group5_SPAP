@@ -18,8 +18,8 @@
 - [ ] **Input Validation:* Add try/except blocks to prevent crashes.
 
 ## `src/controllers.py`
-- [ ] **SessionController:** Implement logic to start/stop timers.
-- [ ] **AnalyticsEngine:** Implement logic to calculate productivity scores.
+- [x] **SessionController:** Implement logic to start/stop timers.
+- [x] **AnalyticsEngine:** Implement logic to calculate productivity scores.
 
 ## `tests/`
 - [ ] **Unit Tests:** Verify models and hashing using `pytest`.
