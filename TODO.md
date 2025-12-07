@@ -22,7 +22,8 @@
 - [x] **AnalyticsEngine:** Implement logic to calculate productivity scores.
 
 ## `tests/`
-- [ ] **Unit Tests:** Verify models and hashing using `pytest`.
+- [x] **Unit Tests:** Verify models and hashing using `pytest`.
+- [x] **Optimization:** Use cProfile/timeit for performance.
 
 ---
 
