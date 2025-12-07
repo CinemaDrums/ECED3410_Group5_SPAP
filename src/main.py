@@ -120,36 +120,45 @@ def login_menu():
             # registration logic
             print("\n--- Create New Account ---")
             print("Please provide the following information:\n")
-            new_email = input("Enter your email: ").strip()
 
-            if not new_email:
-                print("\n✗ Error: Email cannot be empty.")
-                pause()
-                continue
-        
-            # check if user already exists
-            if db.get_student(new_email):
-                print("\n✗ Error: User with this email already exists.")
-                print("Please use option 1 to login or try a different email.")
-                pause()
-                continue
+            # email input loop
+            while True:
+                new_email = input("Enter your email: ").strip()
 
-            new_password = input("Enter your password (min 8 characters): ").strip()
+                if not new_email:
+                    print("✗ Error: Email cannot be empty. Please try again.")
+                    continue  # ✅ Asks for email again, stays in registration
+                
+                # check if user already exists
+                if db.get_student(new_email):
+                    print("✗ Error: User with this email already exists.")
+                    print("Please use option 1 to login or try a different email.")
+                    continue  # asks for email again
+                
+                break  # email is valid, move to password
 
-            if len(new_password) < 8:
-                print("\n✗ Error: Password must be at least 8 characters long.")
-                print("Please try again with a stronger password.")
-                pause()
-                continue
+            # password input loop
+            while True:
+                new_password = input("Create a password (min 8 characters): ").strip()
 
-            new_student_id = input("Enter your 6-digit student ID: ").strip()
+                if len(new_password) < 8:
+                    print("✗ Error: Password must be at least 8 characters long.")
+                    print("Please try again with a stronger password.")
+                    continue  # asks for password again
+                
+                break # password is valid, move to student ID
 
-            # check if student ID follows pattern
-            pattern = r'[0-9]{6}' # exactly 6 digits
-            if not re.fullmatch(pattern, new_student_id):
-                print("\n✗ Error: Student ID must be exactly 6 digits (e.g., 123456).")
-                pause()
-                continue
+            # student ID input loop
+            while True:
+                new_student_id = input("Enter your 6-digit student ID: ").strip()
+
+                # check if student ID follows pattern
+                pattern = r'[0-9]{6}' # exactly 6 digits
+                if not re.fullmatch(pattern, new_student_id):
+                    print("✗ Error: Student ID must be exactly 6 digits (e.g., 123456).")
+                    continue  # Ask for student ID again
+                
+                break # student ID is valid, proceed to create new account
 
             # create the new Student object
             new_student = Student(email = new_email, student_id = new_student_id, password_hash = "")
