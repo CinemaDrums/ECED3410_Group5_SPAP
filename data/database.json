@@ -24,8 +24,31 @@
                     "duration_minutes": 0,
                     "session_type": 2,
                     "session_task": null
+                },
+                {
+                    "session_id": 0,
+                    "start_time": "1765092489.7231572",
+                    "duration_minutes": 0,
+                    "session_type": 2,
+                    "session_task": null
                 }
             ]
+        },
+        {
+            "email": "2",
+            "password_hash": "$2b$12$8BHJ9K5382PROVJGDOQ6peArsklaQWdpm3ivOhQ8FBafeDhLupqPK",
+            "student_id": "2",
+            "courses": [],
+            "tasks": [],
+            "study_sessions": []
+        },
+        {
+            "email": "3",
+            "password_hash": "$2b$12$VsE0nZ1JUo4frdhHmJODCe/b/ABs8V2tGaoafbnQhKFCEPPDc0W/C",
+            "student_id": "123456",
+            "courses": [],
+            "tasks": [],
+            "study_sessions": []
         }
     ]
 }

@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 from datetime import datetime
 import time
 
@@ -79,7 +80,12 @@ def login_menu():
 
             new_password = input("Enter your password: ").strip()
             new_student_id = input("Enter your student ID: ").strip()
-
+            # check if email follows email pattern
+            pattern = r'[0-9][0-9][0-9][0-9][0-9][0-9]'
+            if not re.fullmatch(pattern, new_student_id):
+                print("\nError: Student ID must be a unique 6 digit code")
+                pause()
+                continue
             # create the new Student object
             new_student = Student(email = new_email, student_id = new_student_id, password_hash = "")
             new_student.set_password(new_password) # this handles the bcrypt hashing
