@@ -135,9 +135,16 @@ def login_menu():
                 continue
 
             new_password = input("Enter your password (min 8 characters): ").strip()
+
+            if len(new_password) < 8:
+                print("\n✗ Error: Password must be at least 8 characters long.")
+                print("Please try again with a stronger password.")
+                pause()
+                continue
+
             new_student_id = input("Enter your 6-digit student ID: ").strip()
 
-            # check if email follows email pattern
+            # check if student ID follows pattern
             pattern = r'[0-9]{6}' # exactly 6 digits
             if not re.fullmatch(pattern, new_student_id):
                 print("\n✗ Error: Student ID must be exactly 6 digits (e.g., 123456).")
@@ -151,7 +158,7 @@ def login_menu():
             # save them to the database
             db.add_student(new_student)
 
-            print("\nAccount created successfully! Logging you in...")
+            print("\n✓ Account created successfully! Logging you in...")
             time.sleep(1)
             return new_student
         
