@@ -5,7 +5,18 @@
             "password_hash": "$2b$12$TuawpUWOBXsHDMDk8DRFtOFP7OCNl1urVsgT.R8nd4v199ZjDL2LG",
             "student_id": "1",
             "courses": [],
-            "tasks": [],
+            "tasks": [
+                {
+                    "task_id": 1,
+                    "title": "1",
+                    "date_assigned": "2025-12-07",
+                    "due_date": "1",
+                    "weighted_percent": 0.0,
+                    "points_earned": 0.0,
+                    "task_status": 1,
+                    "total_work_time": 0.0
+                }
+            ],
             "study_sessions": [
                 {
                     "session_id": 0,

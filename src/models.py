@@ -233,6 +233,7 @@ class Day:
     # These default to empty lists using field(default_factory=list)
     # This will ensure each Course instance has its own separate lists
     study_sessions: List["StudySession"] = field(default_factory=list)
+    tasks: List["Task"] = field(default_factory=list)
 
     def add_study_session(self, session: "StudySession") -> None:
         """
@@ -242,9 +243,14 @@ class Day:
         """
         self.study_sessions.append(session)
 
+    def add_task(self, task: "Task") -> None:
+        #Adds a task to this course's list of tasks.
+        self.tasks.append(task)
+
     def to_dict(self):
         return {
             "date": str(self.date),
             "productivity_score": self.productivity_score,
             "study_sessions": [s.to_dict() for s in self.study_sessions],
+            "tasks": [t.to_dict() for t in self.tasks],
         }
