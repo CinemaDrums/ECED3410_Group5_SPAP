@@ -49,6 +49,25 @@
             "courses": [],
             "tasks": [],
             "study_sessions": []
+        },
+        {
+            "email": "email@dal.ca",
+            "password_hash": "$2b$12$3HKqXm62kpkFNnrp2mMO7OtaMIh9xx9YXS.YS00zNquUWJaStOyj2",
+            "student_id": "123456",
+            "courses": [],
+            "tasks": [
+                {
+                    "task_id": 1,
+                    "title": "test",
+                    "date_assigned": "TBD",
+                    "due_date": "TBD",
+                    "weighted_percent": 20.0,
+                    "points_earned": 0.0,
+                    "task_status": 1,
+                    "total_work_time": 0.0
+                }
+            ],
+            "study_sessions": []
         }
     ]
 }

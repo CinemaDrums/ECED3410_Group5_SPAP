@@ -246,48 +246,58 @@ def main_menu(student):
             print("\n--- Add New Task ---")
             print("Fill in the task details below:\n")
 
-            title = input("Enter task title: ").strip()
+            # title input loop
+            while True:
+                title = input("Enter task title: ").strip()
+                if not title:
+                        print("✗ Error: Task title cannot be empty. Please try again.")
+                        continue  # asks for title again
+                break  # title is valid, move to next input
+            
+            # date assigned input loop
+            while True:
+                # ask user for date the task was assigned
+                date_assigned_input = input("Date assigned (YYYY-MM-DD) or press Enter to skip: ").strip()
 
-            if not title:
-               print("\n✗ Error: Task title cannot be empty.")
-               pause()
-               continue
-
-            # ask user for date the task was assigned
-            date_assigned_input = input("Date assigned (YYYY-MM-DD) or press Enter to skip: ").strip()
-
-            if date_assigned_input:
-                is_valid, error_msg = validate_date(date_assigned_input)
-                if not is_valid:
-                    print(f"\n✗ Error: {error_msg}")
-                    pause()
-                    continue
+                if date_assigned_input:
+                    is_valid, error_msg = validate_date(date_assigned_input)
+                    if not is_valid:
+                        print(f"\n✗ Error: {error_msg}")
+                        continue
+                    final_date_assigned = date_assigned_input
+                break # date assigned is valid, move to next input
 
             # use what they typed, or default to "TBD" if blank
             final_date_assigned = date_assigned_input if date_assigned_input else "TBD"
 
-            # ask the user for the due date
-            due_date_input = input("Due date (YYYY-MM-DD) or press Enter to skip: ").strip()
+            # due date input loop
+            while True:
+                # ask the user for the due date
+                due_date_input = input("Due date (YYYY-MM-DD) or press Enter to skip: ").strip()
 
-            if due_date_input:
-                is_valid, error_msg = validate_date(due_date_input)
-                if not is_valid:
-                    print(f"\n✗ Error: {error_msg}")
-                    pause()
-                    continue
+                if due_date_input:
+                    is_valid, error_msg = validate_date(due_date_input)
+                    if not is_valid:
+                        print(f"\n✗ Error: {error_msg}")
+                        continue
+                    final_due_date = due_date_input
+                break # due date is valid, move to next input
 
             # use what they typed, or default to "TBD" if blank
             final_due_date = due_date_input if due_date_input else "TBD"
 
-            # ask user for assignments worth as a percentage of the courses grade
-            task_percent_input = input("Worth as % of course grade (0-100): ").strip()
+            # weighted percentage input loop
+            while True:
+                # ask user for assignments worth as a percentage of the courses grade
+                task_percent_input = input("Worth as % of course grade (0-100): ").strip()
 
-            # vailidate percentage input
-            is_valid, task_percent, error_msg = validate_percentage(task_percent_input)
-            if not is_valid:
-                print(f"\n✗ Error: {error_msg}")
-                pause()
-                continue
+                # vailidate percentage input
+                is_valid, value, error_msg = validate_percentage(task_percent_input)
+                if not is_valid:
+                    print(f"\n✗ Error: {error_msg}")
+                    continue
+                task_percent = value
+                break # percentage is valid, proceed to create task
 
             # simple ID generation
             new_task_id = len(student.tasks) + 1
