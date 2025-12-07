@@ -148,12 +148,20 @@ def main_menu(student):
             # add new task logic
             print("\n--- Add New Task ---")
             title = input("Enter task title: ").strip()
+            # ask user for date the task was assigned
+            date_assigned_input = input("Enter date task was assigned (YYYY-MM-DD) or leave blank for none: ").strip()
+
+            # use what they typed, or default to "TBD" if blank
+            final_date_assigned = date_assigned_input if date_assigned_input else "TBD"
 
             # ask the user for the due date
             due_date_input = input("Enter due date (YYYY-MM-DD) or leave blank for none: ").strip()
 
             # use what they typed, or default to "TBD" if blank
             final_due_date = due_date_input if due_date_input else "TBD"
+
+            # ask user for assignments worth as a percentage of the courses grade
+            task_percent = input("Enter the worth of the assignment as a percentage of the courses grade: ").strip()
 
             # simple ID generation
             new_task_id = len(student.tasks) + 1
@@ -162,9 +170,9 @@ def main_menu(student):
             new_task = Task(
                 task_id = new_task_id,
                 title = title,
-                date_assigned = str(datetime.now().date()),
+                date_assigned = final_date_assigned,
                 due_date = final_due_date,
-                weighted_percent = 0.0,
+                weighted_percent = task_percent,
                 points_earned = 0.0,
                 total_work_time = 0.0,
                 task_status = Status.TODO.value
