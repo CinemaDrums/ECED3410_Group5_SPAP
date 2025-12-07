@@ -1,5 +1,5 @@
 from typing import List, Optional # 'List' is a type hint that says "this variable holds a list of things".
-from dataclasses import dataclass, field # 
+from dataclasses import dataclass, field
 from enum import Enum, IntEnum
 import datetime
 import bcrypt

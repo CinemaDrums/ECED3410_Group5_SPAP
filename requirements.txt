@@ -1,2 +1,2 @@
-pytest 
-bcrypt 
+pytest>=7.0
+bcrypt
