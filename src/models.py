@@ -173,7 +173,7 @@ class Task:
             "due_date": str(self.due_date),
             "weighted_percent": self.weighted_percent,
             "points_earned": self.points_earned,
-            "task_status": self.task_status.value,
+            "task_status": self.task_status,
             "total_work_time": self.total_work_time,
         }
 

@@ -14,8 +14,8 @@
 - [x] **Database Persistence:** Implement `DatabaseHandler` to read/write `database.json`.
 
 ## `src/main.py`
-- [ ] **CLI Interface:** Build the main menu loop (Add Task, Start Timer, etc.).
-- [ ] **Input Validation:* Add try/except blocks to prevent crashes.
+- [x] **CLI Interface:** Build the main menu loop (Add Task, Start Timer, etc.).
+- [x] **Input Validation:* Add try/except blocks to prevent crashes.
 
 ## `src/controllers.py`
 - [x] **SessionController:** Implement logic to start/stop timers.

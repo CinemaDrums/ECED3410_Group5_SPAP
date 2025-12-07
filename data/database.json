@@ -1,0 +1,20 @@
+{
+    "students": [
+        {
+            "email": "as884389@dal.ca",
+            "password_hash": "$2b$12$DNw4EajQETdvc.D0N2BEg.zJM6hwo3LJL5E.OZs08akk52db0/2Ca",
+            "student_id": "B00958017",
+            "courses": [],
+            "tasks": [],
+            "study_sessions": [
+                {
+                    "session_id": 0,
+                    "start_time": "1765072966.131106",
+                    "duration_minutes": 0,
+                    "session_type": 2,
+                    "session_task": null
+                }
+            ]
+        }
+    ]
+}
