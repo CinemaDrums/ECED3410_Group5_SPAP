@@ -3,9 +3,9 @@ import sys
 from datetime import datetime
 import time
 
-from src.models import Student, Course, Task, Type, Day, Status
-from src.storage import DatabaseHandler
-from src.controllers import SessionController, AnalyticsEngine
+from models import Student, Course, Task, Type, Day, Status
+from storage import DatabaseHandler
+from controllers import SessionController, AnalyticsEngine
 
 # initialize the DatabaseHandler globally so all modules can access it
 db = DatabaseHandler()
@@ -69,20 +69,20 @@ def login_menu():
         elif choice == '2':
             # registration logic
             print("\n--- Create New Account ---")
-            email = input("Enter your email: ").strip()
+            new_email = input("Enter your email: ").strip()
 
             # check if user already exists
-            if db.get_student(email):
+            if db.get_student(new_email):
                 print("\nError: User with this email already exists.")
                 pause()
                 continue
 
-            password = input("Enter your password: ").strip()
-            student_id = input("Enter your student ID: ").strip()
+            new_password = input("Enter your password: ").strip()
+            new_student_id = input("Enter your student ID: ").strip()
 
             # create the new Student object
-            new_student = Student(email = email, student_id = student_id, password_hash = "")
-            new_student.set_password(password) # this handles the bcrypt hashing
+            new_student = Student(email = new_email, student_id = new_student_id, password_hash = "")
+            new_student.set_password(new_password) # this handles the bcrypt hashing
 
             # save them to the database
             db.add_student(new_student)

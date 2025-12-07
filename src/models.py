@@ -1,16 +1,15 @@
 from typing import List, Optional # 'List' is a type hint that says "this variable holds a list of things".
 from dataclasses import dataclass, field # 
-from enum import Enum
+from enum import Enum, IntEnum
 import datetime
 import bcrypt
 
-
-class Type(Enum):
+class Type(IntEnum):
     LECTURE = 1
     STUDY = 2
     CLASSWORK = 3
 
-class Status(Enum):
+class Status(IntEnum):
     TODO = 1
     IN_PROGRESS = 2
     DONE = 3
@@ -206,7 +205,7 @@ class StudySession:
             "session_id": self.session_id,
             "start_time": str(self.start_time),
             "duration_minutes": self.duration_minutes,
-            "session_type": self.session_type.value,
+            "session_type": self.session_type,
             "session_task": self.session_task.to_dict() if self.session_task else None # Check if task exists before trying to save it, otherwise save None
 
         }
@@ -233,16 +232,19 @@ class Day:
     # List of objects connected to this course
     # These default to empty lists using field(default_factory=list)
     # This will ensure each Course instance has its own separate lists
+    study_sessions: List["StudySession"] = field(default_factory=list)
 
-    tasks: List["Task"] = field(default_factory=list)
-
-    def add_task(self, task: "Task") -> None:
-        #Adds a task to this course's list of tasks.
-        self.tasks.append(task)
+    def add_study_session(self, session: "StudySession") -> None:
+        """
+        Stores a completed study session.
+        
+        The SessionController creates the session and calculates its duration.
+        """
+        self.study_sessions.append(session)
 
     def to_dict(self):
         return {
             "date": str(self.date),
             "productivity_score": self.productivity_score,
-            "tasks": [t.to_dict() for t in self.tasks],
+            "study_sessions": [s.to_dict() for s in self.study_sessions],
         }

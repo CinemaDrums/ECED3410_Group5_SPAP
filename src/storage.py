@@ -1,6 +1,6 @@
 import json
 import os
-from src.models import Task, StudySession, Student, Course
+from models import Task, StudySession, Student, Course
 
 # Storing the database in a separate folder so it doesn't clutter the root directory.
 DATA_FILE = "data/database.json"
@@ -20,7 +20,7 @@ class DatabaseHandler:
         """
         Loads raw JSON from disk and converts it back into actual Python objects (Students, Tasks, etc).
         
-        We need his because JSON is just text, so it doesn't know what a 'Student' is.
+        We need this because JSON is just text, so it doesn't know what a 'Student' is.
         So we have to manually rebuild the objects everytime the program starts.
         """
 
