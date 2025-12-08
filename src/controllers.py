@@ -1,5 +1,5 @@
 import time
-from .models import StudySession, Task, Type
+from models import StudySession, Task, Type
 
 class SessionController:
     """

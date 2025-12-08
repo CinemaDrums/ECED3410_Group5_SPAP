@@ -1,6 +1,6 @@
 import json
 import os
-from .models import Task, StudySession, Student, Course
+from models import Task, StudySession, Student, Course
 
 # Storing the database in a separate folder so it doesn't clutter the root directory.
 DATA_FILE = "data/database.json"

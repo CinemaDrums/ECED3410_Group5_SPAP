@@ -4,9 +4,9 @@ import re
 from datetime import datetime
 import time
 
-from .models import Student, Course, Task, Type, Day, Status
-from .storage import DatabaseHandler
-from .controllers import SessionController, AnalyticsEngine
+from models import Student, Course, Task, Type, Day, Status
+from storage import DatabaseHandler
+from controllers import SessionController, AnalyticsEngine
 
 # initialize the DatabaseHandler globally so all modules can access it
 db = DatabaseHandler()
