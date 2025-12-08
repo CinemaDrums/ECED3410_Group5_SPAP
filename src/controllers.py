@@ -95,3 +95,17 @@ class AnalyticsEngine:
                 score += 50.0
 
         return round(score, 1) # Round to 1 decimal place
+    
+    @staticmethod
+    def calculate_course_grade(course):
+        """Calculates weighted average for a course."""
+        total_weight = sum(t.weighted_percent for t in course.tasks)
+        if total_weight == 0:
+            return 0.0
+        
+        weighted_sum = sum(
+            (t.points_earned / 100.0) * t.weighted_percent 
+            for t in course.tasks 
+            if t.points_earned > 0
+        )
+        return round((weighted_sum / total_weight) * 100, 2)
