@@ -40,6 +40,15 @@
                     "grade_percent": 0.0,
                     "tasks": [],
                     "calendar": []
+                },
+                {
+                    "course_id": "ECED 3410",
+                    "hours_study": 0.0,
+                    "hours_lecture": 0.0,
+                    "hours_classwork": 0.0,
+                    "grade_percent": 0.0,
+                    "tasks": [],
+                    "calendar": []
                 }
             ],
             "tasks": [
