@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 try:
-    # Import using the full package name so relative imports (from .models) work
+    # Import using the full package name so relative imports work
     from src.main import login_menu, main_menu
 except ImportError as e:
     print("CRITICAL ERROR: Could not import project modules.")
