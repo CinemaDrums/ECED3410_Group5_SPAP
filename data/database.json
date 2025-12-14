@@ -1,29 +1,96 @@
 {
     "students": [
         {
-            "email": "1",
-            "password_hash": "$2b$12$TuawpUWOBXsHDMDk8DRFtOFP7OCNl1urVsgT.R8nd4v199ZjDL2LG",
-            "student_id": "1",
-            "courses": [],
+            "email": "email@dal.ca",
+            "password_hash": "$2b$12$8yDWqrR3qR1WJhKEG10pjO00lL6slFRIQbLRcGEe/p1amS3Bq/Tsa",
+            "student_id": "123456",
+            "courses": [
+                {
+                    "course_id": "ECED 3500",
+                    "hours_study": 0.0,
+                    "hours_lecture": 0.0,
+                    "hours_classwork": 0.0,
+                    "grade_percent": 0.0,
+                    "tasks": [],
+                    "calendar": []
+                },
+                {
+                    "course_id": "ECED 3204",
+                    "hours_study": 0.0,
+                    "hours_lecture": 0.0,
+                    "hours_classwork": 0.0,
+                    "grade_percent": 0.0,
+                    "tasks": [],
+                    "calendar": []
+                },
+                {
+                    "course_id": "ECED 3003",
+                    "hours_study": 0.0,
+                    "hours_lecture": 0.0,
+                    "hours_classwork": 0.0,
+                    "grade_percent": 0.0,
+                    "tasks": [],
+                    "calendar": []
+                },
+                {
+                    "course_id": "CSCI 2110",
+                    "hours_study": 0.0,
+                    "hours_lecture": 0.0,
+                    "hours_classwork": 0.0,
+                    "grade_percent": 0.0,
+                    "tasks": [],
+                    "calendar": []
+                }
+            ],
             "tasks": [
                 {
                     "task_id": 1,
-                    "title": "1",
-                    "date_assigned": "2025-12-07",
-                    "due_date": "1",
-                    "weighted_percent": 0.0,
+                    "title": "ECED 3500 - Lab Report",
+                    "date_assigned": "2025-12-14",
+                    "due_date": "2025-12-16",
+                    "weighted_percent": 40.0,
                     "points_earned": 0.0,
                     "task_status": 1,
-                    "total_work_time": 0.0
+                    "total_work_time": 45.0
+                },
+                {
+                    "task_id": 2,
+                    "title": "ECED 3204 - Lab 5",
+                    "date_assigned": "2025-12-01",
+                    "due_date": "2025-12-18",
+                    "weighted_percent": 5.0,
+                    "points_earned": 0.0,
+                    "task_status": 2,
+                    "total_work_time": 20.0
+                },
+                {
+                    "task_id": 3,
+                    "title": "ECED 3003 - Assignment 5",
+                    "date_assigned": "2025-12-03",
+                    "due_date": "2025-12-21",
+                    "weighted_percent": 10.0,
+                    "points_earned": 0.0,
+                    "task_status": 2,
+                    "total_work_time": 120.0
+                },
+                {
+                    "task_id": 4,
+                    "title": "CSCI 2110 - Assignment 4",
+                    "date_assigned": "2025-11-25",
+                    "due_date": "2025-12-10",
+                    "weighted_percent": 5.0,
+                    "points_earned": 100.0,
+                    "task_status": 3,
+                    "total_work_time": 300.0
                 }
             ],
             "study_sessions": [
                 {
-                    "session_id": 0,
-                    "start_time": "1765090353.4970784",
-                    "duration_minutes": 0,
-                    "session_type": 2,
-                    "session_task": null
+                    "session_id": 1,
+                    "start_time": "1765450000.0",
+                    "duration_minutes": 120,
+                    "session_type": 1,
+                    "session_task": 4
                 },
                 {
                     "session_id": 0,
@@ -48,25 +115,6 @@
             "student_id": "123456",
             "courses": [],
             "tasks": [],
-            "study_sessions": []
-        },
-        {
-            "email": "email@dal.ca",
-            "password_hash": "$2b$12$3HKqXm62kpkFNnrp2mMO7OtaMIh9xx9YXS.YS00zNquUWJaStOyj2",
-            "student_id": "123456",
-            "courses": [],
-            "tasks": [
-                {
-                    "task_id": 1,
-                    "title": "test",
-                    "date_assigned": "TBD",
-                    "due_date": "TBD",
-                    "weighted_percent": 20.0,
-                    "points_earned": 0.0,
-                    "task_status": 1,
-                    "total_work_time": 0.0
-                }
-            ],
             "study_sessions": []
         }
     ]

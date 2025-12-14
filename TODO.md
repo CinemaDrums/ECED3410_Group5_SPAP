@@ -30,8 +30,8 @@
 # Submission 5 FINAL SUBMISSION (Must be submitted by Sunday Dec. 14th)
 
 ## Polish & Security
-- [ ] **Accessibility:** Review error messages for clarity (POUR principles from lecture).
-- [ ] **Code Cleanup:** Remove "TODO" comments and unsused imports.
+- [x] **Accessibility:** Review error messages for clarity (POUR principles from lecture).
+- [x] **Code Cleanup:** Remove "TODO" comments and unused imports.
 
 ## Documentation
 - [ ] **Final Report:** Compile submissions 1-4 into one formal document.

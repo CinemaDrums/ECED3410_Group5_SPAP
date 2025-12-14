@@ -210,11 +210,11 @@ def main_menu(student):
         print("5. Delete Task")
         print("6. View Analytics Report")
         print("7. Add New Course")
-        print("8. Save & Logout")
+        print("8. Smart Study Recommendation")
+        print("9. Save & Logout")
         print("\nTip: Choose option 6 to see your productivity score!")
 
-        choice = input("\nSelect an option (1-8): ").strip()
-
+        choice = input("\nSelect an option (1-9): ").strip()
         if choice == '1':
             # start/stop timer logic
             print("\n--- Start Study Session ---")
@@ -493,7 +493,7 @@ def main_menu(student):
             print("\n--- Productivity Analytics Report ---")
             print("═" * 60)
 
-            today_view = Day(date=str(datetime.now().date()), tasks=student.tasks)
+            today_view = Day(date=str(datetime.now().date()), tasks=student.tasks, productivity_score=0.0)
             score = AnalyticsEngine.calculate_daily_score(today_view)
 
             total_study_minutes = sum(s.duration_minutes for s in student.study_sessions)
@@ -551,6 +551,37 @@ def main_menu(student):
             pause()
 
         elif choice == '8':
+            # smart recommendation logic
+            print("\n--- 🧠 Smart Study Assistant ---")
+            print("Finding your most critical task...") # Simple, user-friendly text
+            time.sleep(1) 
+
+            # Call the algorithm from controllers.py
+            recommended_task, reason = AnalyticsEngine.get_smart_recommendation(student)
+
+            if recommended_task:
+                print(f"\n👉 RECOMMENDED TASK: {recommended_task.title}")
+                print(f"   Due: {recommended_task.due_date}")
+                print(f"   Status: {get_status_label(recommended_task.task_status)}")
+                print(f"   Why: {reason}")
+                
+                print("\nWould you like to start a study session for this task now?")
+                if confirm_action("Start Timer?"):
+                    # Auto-start the timer logic using the recommendation
+                    session = controller.start_session(task=recommended_task)
+                    print(f"\n⏱️ Timer Started for '{recommended_task.title}'!")
+                    input("Press Enter to STOP...")
+                    
+                    session = controller.stop_session()
+                    student.add_study_session(session)
+                    db.save_data()
+                    print(f"\n✓ Saved {session.duration_minutes} minutes of study.")
+            else:
+                print(f"\n{reason}")
+            
+            pause()
+
+        elif choice == '9':
             # save & logout logic
             print("\nSaving your data...")
             db.save_data()
