@@ -107,10 +107,10 @@ class Course:
     """
 
     course_id: str # the course id, example ECED 3500 followed by the name of the course (must be unique)
-    hours_study: float # the number of hours the student has spent studying for this course
-    hours_lecture: float # the number of hours spent in lecture for this course
-    hours_classwork: float # the number of hours spent working on classwork for this course
-    grade_percent: float # total grade percentage earned for this course
+    hours_study: float = 0.0 # the number of hours the student has spent studying for this course
+    hours_lecture: float = 0.0 # the number of hours spent in lecture for this course
+    hours_classwork: float = 0.0 # the number of hours spent working on classwork for this course
+    grade_percent: float = 0.0 # total grade percentage earned for this course
 
     # Lists of objects connected to this course
     # These default to empty lists using field(default_factory=list)
