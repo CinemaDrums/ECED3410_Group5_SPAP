@@ -201,13 +201,23 @@ class StudySession:
     session_task: Optional["Task"] = None
 
     def to_dict(self):
+        # Handle polymorphic data: session_task might be a Task object OR an integer ID
+        task_data = None
+        
+        if self.session_task:
+            # Check if it has a .to_dict method (meaning it's a real Task object)
+            if hasattr(self.session_task, 'to_dict'):
+                task_data = self.session_task.to_dict()
+            else:
+                # If not (it's likely an int ID loaded from JSON), just save the raw value
+                task_data = self.session_task
+
         return {
             "session_id": self.session_id,
             "start_time": str(self.start_time),
             "duration_minutes": self.duration_minutes,
             "session_type": self.session_type,
-            "session_task": self.session_task.to_dict() if self.session_task else None # Check if task exists before trying to save it, otherwise save None
-
+            "session_task": task_data
         }
 
 @dataclass

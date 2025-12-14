@@ -45,6 +45,10 @@ class DatabaseHandler:
                         student_id=s_data.get('student_id', ""),
                     )
 
+                    # Load courses
+                    for c in s_data.get('courses', []):
+                        new_student.courses.append(Course(**c))
+
                     # The student has a list of tasks, so we need to rebuild those too.
                     for t in s_data.get('tasks', []):
                         new_student.tasks.append(Task(**t)) # '**t' is a shortcut that unpacks the dictionary into arguments.
