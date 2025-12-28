@@ -34,6 +34,6 @@
 - [x] **Code Cleanup:** Remove "TODO" comments and unused imports.
 
 ## Documentation
-- [ ] **Final Report:** Compile submissions 1-4 into one formal document.
-- [ ] **Executive Summary:** Write a high level project overview.
-- [ ] **Video Presentation:** Record a less than 10 minutes long Zoom video presentation.
+- [x] **Final Report:** Compile submissions 1-4 into one formal document.
+- [x] **Executive Summary:** Write a high level project overview.
+- [x] **Video Presentation:** Record a less than 10 minutes long Zoom video presentation.
